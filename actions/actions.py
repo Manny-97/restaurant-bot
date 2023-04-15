@@ -46,7 +46,7 @@ class ValidateRestaurantForm(FormValidationAction):
         tracker: "Tracker",
         domain: "DomainDict",
     ) -> Optional[List[Text]]:
-        required_slots = ["time"] + slots_mapped_in_domain
+        required_slots = ["time", "section", "seats"]
         return required_slots
 
     async def extract_time(
@@ -77,4 +77,68 @@ class ValidateRestaurantForm(FormValidationAction):
             # print(hours)
             dispatcher.utter_message(text="Please enter a valid time. :(")
             return {"time": None}
+        dispatcher.utter_message(text=f"OK! You have chosen: {time}.")
         return {"time": time}
+
+    async def extract_seats(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        seat = tracker.get_slot("seats")
+        if seat is None:
+            return {"seat": None}
+        return {"seats": seat}
+
+    async def validate_seats(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        seat = tracker.get_slot("seats")
+        if seat is None:
+            return {"seat": None}
+        # print(time)
+        if type(seat) == int:
+            # print(hours)
+            dispatcher.utter_message(
+                text="Please enter a valid \
+                                     number of seats:"
+            )
+            return {"time": None}
+        dispatcher.utter_message(text=f"OK! You have chosen: {seat} seats.")
+        return {"time": seat}
+
+    async def extract_section(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        section = tracker.get_slot("section")
+        if section not in []:
+            return {"seat": None}
+        return {"seats": section}
+
+    async def validate_section(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        section = tracker.get_slot("section")
+        if section is None:
+            dispatcher.utter_message(
+                text="Please enter any of the \
+                                     listed sections:"
+            )
+            return {"time": None}
+        dispatcher.utter_message(
+            text=f"OK! You have chosen: \
+                                 {section} section."
+        )
+        return {"time": section}
