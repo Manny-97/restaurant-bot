@@ -1,0 +1,16 @@
+
+# .rasa/
+.rasa/
+
+# venv/
+venv/
+
+# .isort.cfg
+.isort.cfg
+
+
+# .rasa/
+.rasa/
+
+# duckling/
+duckling/
