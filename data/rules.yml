@@ -1,0 +1,29 @@
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Activate form
+  steps:
+  - intent: book
+  - action: restaurant_form
+  - active_loop: restaurant_form
+
+- rule: Submit form
+  condition:
+  - active_loop: restaurant_form
+  steps:
+  - action: restaurant_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_booking_confirmation
+
+- rule: respond to FAQs
+  steps:
+  - intent: faq
+  - action: utter_faq
