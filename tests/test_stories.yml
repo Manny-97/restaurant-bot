@@ -1,0 +1,53 @@
+#### This file contains tests to evaluate that your bot behaves as expected.
+#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+
+stories:
+- story: Story from Conversation ID aab16aab1b9b4e75ac303a61f9769eb8
+  steps:
+  - intent: greet
+  - action: utter_greeting
+  - intent: book
+  - action: restaurant_form
+  - active_loop: restaurant_form
+  - slot_was_set:
+    - requested_slot: time
+  - intent: time
+    entities:
+    - time: '2021-05-17T21:00:00.000-07:00'
+  - slot_was_set:
+    - time: '2021-05-17T21:00:00.000-07:00'
+  - action: restaurant_form
+  - slot_was_set:
+    - time: 21:00
+  - slot_was_set:
+    - requested_slot: seats
+  - intent: seats
+    entities:
+    - seats: '6'
+  - slot_was_set:
+    - seats: '6'
+  - action: restaurant_form
+  - slot_was_set:
+    - time: 21:00
+  - slot_was_set:
+    - seats: '6'
+  - slot_was_set:
+    - requested_slot: section
+  - intent: section
+    entities:
+    - section: Non-AC
+  - slot_was_set:
+    - section: Non-AC
+  - action: restaurant_form
+  - slot_was_set:
+    - time: 21:00
+  - slot_was_set:
+    - section: Non-AC
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_booking_confirmation
+  - intent: faq
+  - action: utter_faq
