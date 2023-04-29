@@ -1,0 +1,128 @@
+[
+  {
+    "text": "Book a dinner for me in 10 minutes",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "seats",
+        "start": 24,
+        "end": 26,
+        "confidence_entity": 0.6222289204597473,
+        "value": "10",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "I want to book a table in 1 hr",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "seats",
+        "start": 26,
+        "end": 27,
+        "confidence_entity": 0.4871772825717926,
+        "value": "1",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "could you book a non-AC dinner for a 7 member party at around 8 pm",
+    "entities": [
+      {
+        "start": 17,
+        "end": 23,
+        "value": "non-AC",
+        "entity": "section"
+      },
+      {
+        "start": 37,
+        "end": 38,
+        "value": "7",
+        "entity": "seats"
+      },
+      {
+        "start": 62,
+        "end": 66,
+        "value": "8 pm",
+        "entity": "time"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "section",
+        "start": 17,
+        "end": 23,
+        "confidence_entity": 0.9993094205856323,
+        "value": "non-AC",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "seats",
+        "start": 37,
+        "end": 38,
+        "confidence_entity": 0.5167302489280701,
+        "value": "7",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "seats",
+        "start": 62,
+        "end": 66,
+        "confidence_entity": 0.48390424251556396,
+        "value": "8 pm",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "I want a AC dinner booking for 5 in 40 minutes",
+    "entities": [
+      {
+        "start": 9,
+        "end": 11,
+        "value": "AC",
+        "entity": "section"
+      },
+      {
+        "start": 31,
+        "end": 32,
+        "value": "5",
+        "entity": "seats"
+      },
+      {
+        "start": 36,
+        "end": 46,
+        "value": "40 minutes",
+        "entity": "time"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "section",
+        "start": 9,
+        "end": 11,
+        "confidence_entity": 0.9995216131210327,
+        "value": "AC",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "seats",
+        "start": 31,
+        "end": 32,
+        "confidence_entity": 0.7047680616378784,
+        "value": "5",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "seats",
+        "start": 36,
+        "end": 46,
+        "confidence_entity": 0.6491604447364807,
+        "value": "40 minutes",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  }
+]
